@@ -1,11 +1,11 @@
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        bootJava(MavenPublication) {
+            artifact tasks.named("bootJar")
             groupId = "${group}"
             artifactId = "${rootProject.name}"
             version = "${version}"
-            from components.java
         }
     }
     repositories {
