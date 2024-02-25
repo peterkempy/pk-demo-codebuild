@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+  pre_build:
+    commands:
+      - echo pre_build phase Installing Corretto 17
+      - yum install java-17-amazon-corretto-devel -y
+      - alternatives --set java /usr/lib/jvm/java-17-amazon-corretto.aarch64/bin/java  build:
+      - echo `java -version`
+  build:
+    commands:
+      - echo Build started on `date`
+      - ./gradlew build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - build/libs/pk-demo-codebuild-0.0.1-SNAPSHOT.jar
