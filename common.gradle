@@ -1,9 +1,24 @@
-repositories {
-    maven {
-        url 'https://pk-demo-515656444959.d.codeartifact.ap-southeast-2.amazonaws.com/maven/pk-demo-artfacts/'
-        credentials {
-            username "aws"
-            password System.env.CODEARTIFACT_AUTH_TOKEN
+plugins {
+    id 'maven-publish'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = "${group}"
+            artifactId = "${rootProject.name}"
+            version = "${version}"
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url 'https://pk-demo-515656444959.d.codeartifact.ap-southeast-2.amazonaws.com/maven/pk-demo-artfacts/'
+            credentials {
+                username "aws"
+                password System.env.CODEARTIFACT_AUTH_TOKEN
+            }
         }
     }
 }
+
