@@ -8,8 +8,8 @@ phases:
     commands:
       - echo pre_build phase Installing Corretto 17
       - ls -l /usr/lib/jvm
-      - yum install java-17-amazon-corretto-devel -y
-      - alternatives --list java
+#      - yum install java-17-amazon-corretto-devel -y
+#      - alternatives --list java
       - alternatives --set java /usr/lib/jvm/java-17-amazon-corretto.x86_64/bin/java
       - alternatives --set javac /usr/lib/jvm/java-17-amazon-corretto.x86_64/bin/javac
       - echo `java -version`
